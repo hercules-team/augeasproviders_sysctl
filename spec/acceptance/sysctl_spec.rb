@@ -6,7 +6,8 @@ describe 'Sysctl Tests' do
   hosts.each do |host|
     context "on #{host}" do
       let(:sysctl_conf) do
-        if fact_on(host, 'os.name') == 'Debian' && (fact_on(host, 'os.release.major') || '0').to_i >= 13
+        if (fact_on(host, 'os.name') == 'Debian' && (fact_on(host, 'os.release.major') || '0').to_i >= 13) ||
+            (fact_on(host, 'os.name') == 'Ubuntu' && (fact_on(host, 'os.release.full') || '0').to_f >= 26.04)
           '/etc/sysctl.d/99-puppet.conf'
         else
           '/etc/sysctl.conf'
