@@ -89,4 +89,3 @@ Default value: `false`
 
 The file in which to store the settings, defaults to
 `/etc/sysctl.conf`.
-
